@@ -1,0 +1,21 @@
+function postMessageToDiscord(message) {
+
+  message = message || "Hello World!";
+  
+  var discordUrl = 'https://discordapp.com/api/webhooks/597169326650425374/hq4NMKMDHRcpF50cSewgIrH1Wc_soVOwnp5TdnAbPHa0Ambl7Eq3-kBSdtFtAQ-aLP_R';
+  var payload = JSON.stringify({content: message});
+  
+  var params = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: "POST",
+    payload: payload,
+    muteHttpExceptions: true
+  };
+  
+  var response = UrlFetchApp.fetch(discordUrl, params);
+  
+  Logger.log(response.getContentText());
+
+}
